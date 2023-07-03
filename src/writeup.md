@@ -17,7 +17,7 @@ This widget serves as a source of inspiration which provides some encouragement 
 - Success
 - Happiness
 
-3. Hovering over the quote would prevent the quote changing. I find this is important to be able to read some long quotes
+3. Hovering over the quote would prevent the quote from changing. I find this is important to be able to read some long quotes
 
 
 ## How It Works
@@ -45,7 +45,7 @@ I created a select element and a state called `category`. Making this select ele
 
 ### Loading State
 
-I also made a loading spinner which shows whenver the data is currently being fetched.
+I also made a loading spinner which shows whenever the data is currently being fetched.
 
 ```javascript
 {isLoading && <LoadingSpinner/>}
@@ -53,7 +53,7 @@ I also made a loading spinner which shows whenver the data is currently being fe
 
 ### Showing Data
 
-The data retured from query the [api](https://api-ninjas.com/api/quotes) endpoint is an array of quotes concerning the selected option. See [getRandomQuotes.js](./getRandomQuotes.js)
+The data returned from querying the [api](https://api-ninjas.com/api/quotes) endpoint is an array of quotes concerning the selected option. See [getRandomQuotes.js](./getRandomQuotes.js)
 
 I needed to show this data one after the other and also add some slight animation to it when it changes.
 
@@ -62,7 +62,7 @@ I used `setInterval` function to change the displayedData every 1000ms(1s). This
 ```
   useEffect(() => {
     interval = setInterval(() => {
-      /* Only runs if the items is not in hover statef*/
+      /* Only runs if the quote text is not in hover state */
       if (!isHovered) {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
       }
@@ -71,7 +71,7 @@ I used `setInterval` function to change the displayedData every 1000ms(1s). This
   }, [data.length, data, isHovered]);
 ```
 
-I made use of [framer-motion](https://www.framer.com/motion/). This package provides an easy way to animate elements and added to that, it can also animate react element when they mount and unmount and this is an added advantage to plain css/javascript.
+I made use of [framer-motion](https://www.framer.com/motion/). This package provides an easy way to animate elements and added to that, it can also animate react elements when they mount and unmount and this is an added advantage to plain CSS/javascript.
 I used `AnimatePresence` to animate the element when it is created and destroyed and also `motion.div` properties to set the animation values
 
 ```javascript
@@ -89,7 +89,7 @@ I used `AnimatePresence` to animate the element when it is created and destroyed
 
 ### Hover State
 
-I wanted to add the added functionality where the quote is hovered on, it would not change (assuming the user would still be reading it). I added two functions `handleMouseEnter` and `handleMouseLeave`. These two functions trigger the hover state which they determines if the displayed data should change or not
+I wanted to add the added functionality where the quote is hovered on, it would not change (assuming the user would still be reading it). I added two functions `handleMouseEnter` and `handleMouseLeave`. These two functions trigger the hover state which determines if the displayed data should change or not
 
 
 ### Pseudocode
@@ -100,7 +100,7 @@ In much simpler terms, here's how the code works
 
 - show loading state when fetching, set data when done
 
-2. Create select element which triggers refetching whenever it changes
-3. Loop through this array of data nad display one per time
+2. Create a select element which triggers re-fetching whenever it changes
+3. Loop through this array of data and display one per time
 4. Animate this displayed data (fade in and out)
 
