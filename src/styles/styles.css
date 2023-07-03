@@ -256,3 +256,14 @@
   background-color: #1a202c;
   z-index: 10;
 }
+
+@font-face {
+  font-family: ttramillas;
+  src: url('/TT\ Ramillas\ Trial\ Variable\ Roman.ttf')
+}
+
+.quote {
+  font-family: ttramillas;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
