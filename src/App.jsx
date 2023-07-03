@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import "./App.css";
-import ClockWidget from "./widgets/ClockWidget";
-import WidgetGalleryModal from "./modals/WidgetGalleryModal";
 import Draggable from "react-draggable";
-import TimerWidget from "./widgets/TimerWidget";
+import "./App.css";
+import WidgetGalleryModal from "./modals/WidgetGalleryModal";
 import CalendarWidget from "./widgets/CalendarWidget";
-import QuotesWidget from "./widgets/QuotesWidget";
+import ClockWidget from "./widgets/ClockWidget";
+import TimerWidget from "./widgets/TimerWidget";
 
 function InnerApp() {
   const [widgets, setWidgets] = useState([

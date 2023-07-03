@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useSWR from "swr";
-import { getRandomQuote } from "../getQuote";
+import { getRandomQuote } from "../getRandomQuotes";
 import "../styles/styles.css";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -19,6 +19,7 @@ export default function QuotesWidget() {
       }}
     >
       <select
+        value={category}
         onChange={(e) => {
           setCategory(e.target.value);
         }}
@@ -41,12 +42,7 @@ export default function QuotesWidget() {
         }}
       >
         {isLoading && (
-          <div data-loader className="loading-div">
-            <div className="loader">
-              Loading
-              <span></span>
-            </div>
-          </div>
+          <LoadingSpinner />
         )}
         {data ? <DisplayedData data={data} /> : null}
       </div>
@@ -110,35 +106,13 @@ function DisplayedData({ data }) {
   );
 }
 
-function DisplayeddData({ data }) {
-  const [displayedData, setDisplayedData] = useState(data[0]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [data.length]);
-
-  useEffect(() => {
-    setDisplayedData(data[currentIndex]);
-  }, [data, currentIndex]);
-
+function LoadingSpinner() {
   return (
-    <AnimatePresence mode="wait">
-      {displayedData && (
-        <motion.div
-          key={displayedData}
-          initial={{ opacity: 0, top: "-10px" }}
-          animate={{ opacity: 1, top: "10px" }}
-          exit={{ opacity: 0, top: "-10px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <p className="quote">{displayedData}</p>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <div data-loader className="loading-div">
+      <div className="loader">
+        Loading...
+        <span></span>
+      </div>
+    </div>
   );
 }
