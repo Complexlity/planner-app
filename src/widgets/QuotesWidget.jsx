@@ -12,6 +12,7 @@ export default function QuotesWidget() {
     <div
       style={{
         minWidth: 300,
+        maxWidth: 500,
         minHeight: 150,
         display: "flex",
         flexDirection: "column",
