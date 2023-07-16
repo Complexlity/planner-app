@@ -59,7 +59,7 @@ export default function QuotesWidget() {
         }}
       >
         <span style={{ color: "lightgreen" }}>Tip</span>:{" "}
-        <span style={{ fontStyle: "italic" }}>Hover over quote to prevent blur out</span>
+        <span style={{ fontStyle: "italic" }}>Hover over quote to prevent fade out</span>
       </p>
     </div>
   );
