@@ -16,7 +16,7 @@ export default function WidgetGalleryModal({
     { component: <ReminderListWidget />, name: "Reminder List" },
     { component: <TimerWidget />, name: "Timer" },
     { component: <CalendarWidget />, name: "Calendar" },
-    { component: <QuotesWidget />, name: "Quotes Widget" },
+    { component: <QuotesWidget />, name: "Quotes" },
   ]);
   return (
     <div

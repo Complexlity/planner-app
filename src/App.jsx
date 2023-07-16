@@ -5,6 +5,7 @@ import WidgetGalleryModal from "./modals/WidgetGalleryModal";
 import CalendarWidget from "./widgets/CalendarWidget";
 import ClockWidget from "./widgets/ClockWidget";
 import TimerWidget from "./widgets/TimerWidget";
+import QuotesWidget from './widgets/QuotesWidget'
 
 function InnerApp() {
   const [widgets, setWidgets] = useState([
@@ -25,6 +26,12 @@ function InnerApp() {
       component: <TimerWidget />,
       area: "left-widget",
       name: "Timer",
+    },
+    {
+      id: new Date().getTime() + 3,
+      component: <QuotesWidget />,
+      area: "main-widget",
+      name: "Quotes",
     },
   ]);
   const [showWidgetModal, setShowWidgetModal] = useState(false);

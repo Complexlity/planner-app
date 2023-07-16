@@ -11,7 +11,7 @@ export default function QuotesWidget() {
   return (
     <div
       style={{
-        width: 300,
+        minWidth: 300,
         minHeight: 150,
         display: "flex",
         flexDirection: "column",
@@ -45,6 +45,7 @@ export default function QuotesWidget() {
           <LoadingSpinner />
         )}
         {data ? <DisplayedData data={data} /> : null}
+
       </div>
       <p
         style={{
