@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function QuotesWidget() {
   const [category, setCategory] = useState("inspirational");
   const url = `https://api.api-ninjas.com/v1/quotes?category=${category}&limit=10`;
-  const { data, error, isLoading } = useSWR(url, getRandomQuote);
+  const { data, error, isLoading, mutate } = useSWR(url, getRandomQuote);
   return (
     <div
       style={{
@@ -44,7 +44,12 @@ export default function QuotesWidget() {
         {isLoading && (
           <LoadingSpinner />
         )}
-        {data ? <DisplayedData data={data} /> : null}
+
+        {
+          data ? <DisplayedData data={data} />
+            : error
+              ? <ErrorPage mutate={mutate} value={'error'} />
+            : <ErrorPage mutate={mutate} value={'data'} />}
 
       </div>
       <p
@@ -59,6 +64,16 @@ export default function QuotesWidget() {
     </div>
   );
 }
+
+function ErrorPage(value, mutate) {
+  const message = value === 'data' ? "Api didn't return data 😞" : 'Something Went Wrong. Please try again'
+  return (
+    <div className="error">
+      {message}
+      <button onClick={mutate} className="retry-button">Retry</button>
+  </div>)
+}
+
 
 function DisplayedData({ data }) {
   const [displayedData, setDisplayedData] = useState(data[0]);
