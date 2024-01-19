@@ -12,5 +12,4 @@ async function getRandomQuote(url) {
   return quotes
 }
 
-
 export { getRandomQuote}
