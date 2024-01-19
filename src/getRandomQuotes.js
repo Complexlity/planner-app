@@ -1,6 +1,6 @@
 
 async function getRandomQuote(url) {
-  // let url = `https://api.api-ninjas.com/v1/quotes?category=${category}&limit=10`;
+  // let url = `https://api.api-ninjas.com/v1/quotes?category=${category}`;
   let data = await fetch(url, {
     method: "GET",
     headers: { "X-Api-Key": import.meta.env.VITE_QUOTE_API_KEY },
