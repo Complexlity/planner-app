@@ -6,7 +6,7 @@ async function getRandomQuote(url) {
     headers: { "X-Api-Key": import.meta.env.VITE_QUOTE_API_KEY },
   });
   if (!data.ok)
-    return "I am some random quote added here because the api returned an error";
+    return ["I am some random quote added here because the api returned an error"];
   let res = await data.json();
   const quotes = res.map(item => item.quote)
   return quotes
