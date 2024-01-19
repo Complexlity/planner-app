@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function QuotesWidget() {
   const [category, setCategory] = useState("inspirational");
-  const url = `https://api.api-ninjas.com/v1/quotes?category=${category}&limit=10`;
+  const url = `https://api.api-ninjas.com/v1/quotes?category=${category}`;
   const { data, error, isLoading, mutate } = useSWR(url, getRandomQuote);
   return (
     <div
